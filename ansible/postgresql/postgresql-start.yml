@@ -1,0 +1,7 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: "start postgresql"
+      service:
+        name: postgresql
+        state: started

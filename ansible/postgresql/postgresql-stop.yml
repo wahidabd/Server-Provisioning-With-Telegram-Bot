@@ -1,0 +1,7 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: "stop postgresql"
+      service:
+        name: postgresql
+        state: stopped

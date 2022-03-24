@@ -1,0 +1,41 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: "apt update"
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: "install nginx"
+      apt:
+        name: ['nginx']
+        state: latest
+
+    - name: "create www directory"
+      file:
+        path: /var/www/ajk.id
+        state: directory
+        mode: '0775'
+        owner: "wahid"
+        group: "wahid"
+
+    - name: "delete default nginx site"
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      notify: restart nginx
+
+    - name: "copy nginx conf"
+      template:
+        src: /home/wahid/AJK/template/site.conf.j2
+        dest: /etc/nginx/sites-enabled/ajk.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: restart nginx
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted

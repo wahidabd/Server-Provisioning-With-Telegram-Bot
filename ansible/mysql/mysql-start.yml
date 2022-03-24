@@ -1,0 +1,7 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: "start mysql"
+      service:
+        name: mysql
+        state: started

@@ -1,0 +1,7 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: "stop cronjob"
+      service:
+        name: cron
+        state: stopped

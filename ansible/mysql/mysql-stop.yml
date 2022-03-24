@@ -1,0 +1,7 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: "stop mysql"
+      service:
+        name: mysql
+        state: stopped

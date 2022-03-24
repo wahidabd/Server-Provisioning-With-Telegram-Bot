@@ -1,0 +1,11 @@
+- hosts: web
+  tasks: 
+  - name: "sync website"
+    synchronize:
+      src: /home/wahid/AJK/site/
+      dest: /var/www/ajk.id
+      archive: no
+      checksum: yes
+      recursive: yes
+      delete: yes
+    become: no
