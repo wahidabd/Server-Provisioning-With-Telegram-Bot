@@ -2,7 +2,7 @@
   tasks: 
   - name: "sync website"
     synchronize:
-      src: /home/wahid/AJK/site/
+      src: /home/wahid/ajk/site/
       dest: /var/www/ajk.id
       archive: no
       checksum: yes

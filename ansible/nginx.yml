@@ -27,7 +27,7 @@
 
     - name: "copy nginx conf"
       template:
-        src: /home/wahid/AJK/template/site.conf.j2
+        src: /home/wahid/ajk/template/site.conf.j2
         dest: /etc/nginx/sites-enabled/ajk.conf
         owner: root
         group: root
